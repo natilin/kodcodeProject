@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sign in to your account</h1>
+
+        <form>
+            <div class="form-group">
+                <label for="userName">Username:</label>
+                <input id="userName" type="text" placeholder="user name" minlength="2" required>
+            </div>
+
+            <div class="form-group password-container">
+                <label for="userPass">Password:</label>
+                <input id="userPass" type="password" placeholder="enter password" minlength="6" maxlength="20" required>
+                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+            </div>
+
+            <button  type="submit" id="logInBtn">Log In</button>
+            <p class="linkNewUser">Don't have an account? <a href="/clientSide/CreateUser.html" >Sign up</a></p>
+            
+        </form>
+    </div>
+    
+    <script src="index.js"></script>    
+</body> 
+</html>
