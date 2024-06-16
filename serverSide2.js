@@ -46,7 +46,7 @@ const User = mongoose.model('User', userSchema);
 // Routes
 app.post('/users', async (req, res) => {
     const { name, email, age } = req.body; 
-    // מוציא את השדות name, email, ו-age מגוף הבקשה
+    // מוציא את השדות name, email, ו-age מגוף הבקשה dsd
 
     const user = new User({
         name,
