@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Meetings</title>
+    <link rel="stylesheet" href="meeting.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Meetings</h1>
+
+        <div class="meetings-list">
+            <ul id="meetings">
+                <!-- Meetings will be dynamically inserted here -->
+            </ul>
+        </div>
+
+        <div class="schedule-meeting">
+            <h2>Schedule a New Meeting</h2>
+            <form id="meetingForm">
+                <div class="form-group">
+                    <label for="meetingTitle">Meeting Title:</label>
+                    <input id="meetingTitle" type="text" placeholder="Enter meeting title" required>
+                </div>
+                <div class="form-group">
+                    <label for="meetingDate">Meeting Date:</label>
+                    <input id="meetingDate" type="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="meetingTime">Meeting Time:</label>
+                    <input id="meetingTime" type="time" required>
+                </div>
+                <button type="submit">Schedule Meeting</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>
