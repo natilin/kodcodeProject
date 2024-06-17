@@ -1,5 +1,5 @@
 const express = require('express');
-var cors = require('cors');
+const cors = require('cors');
 const mongoose = require('mongoose');
 
 const app = express();
@@ -67,16 +67,23 @@ async function handleMyMeeting(req, res) {
     }
 }
 
+
+async function getMeetings(req, res){
+    const userId = req.params.userId;
+        try {
+            const meetings = await Meeting.find({ clientId: userId });
+            res.send(meetings);
+        } catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+}
+
+
 // Routes
 app.post('/api/logIn', handleLogIn);
-app.post('/api/myMeeting', handleMyMeeting);
+app.get('/api/myMeeting', handleMyMeeting);
+app.get('/api/meetings/:userId', getMeetings)
 
-// Use const PORT = process.env.PORT || 3000 to ensure it is declared only once
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, (err) => {
-    if (err) {
-        console.error(`Failed to start server on port ${PORT}:`, err);
-    } else {
-        console.log(`Server is running on port ${PORT}`);
-    }
-});
+const PORT = 3000;
+
+
