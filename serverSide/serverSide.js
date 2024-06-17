@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
+const { User, Meeting, Doctor } = require('./db'); // Import the models from db.js
 
 const app = express();
 
@@ -20,40 +20,6 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     console.log('Connected to MongoDB');
 });
-
-// User schema
-const userSchema = new mongoose.Schema({
-    name: String,
-    password: String,
-});
-
-
-
-// Explicitly specify the collection name 'User'
-const User = mongoose.model('User', userSchema, 'User');
-
-
-// Meeting schema
-const meetingSchema = new mongoose.Schema({
-    title: String,
-    date: String,
-    time: String,
-    clientId: mongoose.Schema.Types.ObjectId,
-    clientName: String,
-    doctorId: mongoose.Schema.Types.ObjectId,
-    doctorName: String
-});
-
-const Meeting = mongoose.model('Meeting', meetingSchema, 'Meetings');
-
-const doctorSchema = new mongoose.Schema({
-    name: String,
-    specialty: String,
-    experience: Number
-    
-});
-
-const Doctor = mongoose.model('Doctor', doctorSchema, 'Doctors');
 
 
 
