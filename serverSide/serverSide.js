@@ -25,11 +25,37 @@ db.once('open', function () {
 const userSchema = new mongoose.Schema({
     name: String,
     password: String,
-    age: Number
 });
+
+
 
 // Explicitly specify the collection name 'User'
 const User = mongoose.model('User', userSchema, 'User');
+
+
+// Meeting schema
+const meetingSchema = new mongoose.Schema({
+    title: String,
+    date: String,
+    time: String,
+    clientId: mongoose.Schema.Types.ObjectId,
+    clientName: String,
+    doctorId: mongoose.Schema.Types.ObjectId,
+    doctorName: String
+});
+
+const Meeting = mongoose.model('Meeting', meetingSchema, 'Meetings');
+
+const doctorSchema = new mongoose.Schema({
+    name: String,
+    specialty: String,
+    experience: Number
+    
+});
+
+const Doctor = mongoose.model('Doctor', doctorSchema, 'Doctors');
+
+
 
 // Function to handle logIn
 async function handleLogIn(req, res) {
@@ -78,11 +104,21 @@ async function getMeetings(req, res){
         }
 }
 
+async function getAllDoctors(req, res) {
+    try {
+        const doctors = await Doctor.find();
+        res.send(doctors);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}
+
 
 // Routes
 app.post('/api/logIn', handleLogIn);
-app.get('/api/myMeeting', handleMyMeeting);
+app.post('/api/meetings/:userId', handleMyMeeting);
 app.get('/api/meetings/:userId', getMeetings)
+app.get('/api/doctors', getAllDoctors)
 
 const PORT = 3000;
 
