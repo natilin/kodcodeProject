@@ -95,6 +95,7 @@ app.get('/api/doctors', getAllDoctors);
 app.post('/api/signUp', signUpUser);
 
 const PORT = 3000;
+console.log("hi")
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
