@@ -1,4 +1,4 @@
-// const { clear } = require("console");
+
 
 const btn = document.getElementById('logInBtn');
 
@@ -37,6 +37,8 @@ btn.addEventListener("click", (e) => {
             }
             else{
                 window.location.href = '/clientSide/meetings.html';
+                localStorage.setItem(data.id)
+
             }
         })
         .catch(error => {
