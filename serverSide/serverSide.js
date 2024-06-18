@@ -71,13 +71,34 @@ async function getAllDoctors(req, res) {
     }
 }
 
+async function signUpUser(req, res) {
+    const {name, password} = req.body; 
+    try {
+
+        // Create a new user
+        const newUser = new User({name, password}); 
+        await newUser.save(); 
+        res.send({ success: true, message: 'User created successfully', id: newUser._id}); 
+        console.log("'User created successfully'")
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+        console,log(err.message);
+    }
+}
+
 
 // Routes
 app.post('/api/logIn', handleLogIn);
 app.post('/api/meetings/:userId', handleMyMeeting);
-app.get('/api/meetings/:userId', getMeetings)
-app.get('/api/doctors', getAllDoctors)
+app.get('/api/meetings/:userId', getMeetings);
+app.get('/api/doctors', getAllDoctors);
+app.post('/api/signUp', signUpUser);
 
 const PORT = 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
 
 
