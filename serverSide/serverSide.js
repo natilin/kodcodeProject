@@ -12,15 +12,6 @@ app.use((req, res, next) => {
     next(); // Pass the request to the next middleware/handler
 });
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/userdetails', {});
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-    console.log('Connected to MongoDB');
-});
-
 
 
 // Function to handle logIn
@@ -59,7 +50,7 @@ async function handleMyMeeting(req, res) {
     }
 }
 
-
+// Function to get user meeting
 async function getMeetings(req, res){
     const userId = req.params.userId;
         try {
@@ -70,6 +61,7 @@ async function getMeetings(req, res){
         }
 }
 
+// Function to get list of all the doctors
 async function getAllDoctors(req, res) {
     try {
         const doctors = await Doctor.find();
