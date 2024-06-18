@@ -1,11 +1,48 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #e0f7fa; 
+    background-image: url("images/backrawnd.jpg");
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #00796b;
+    color: white;
+    padding: 10px 40px; 
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000; /* לוודא שה-header מעל הכל */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 70px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.logo h1 {
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    color: white; /* לוודא שהכותרת בצבע לבן */
+}
+nav .home i {
+    font-size: 30px;
+    color: white;
+    margin-left: 20px;
 }
 
 .container {
