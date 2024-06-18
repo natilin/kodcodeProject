@@ -79,5 +79,6 @@ app.get('/api/meetings/:userId', getMeetings)
 app.get('/api/doctors', getAllDoctors)
 
 const PORT = 3000;
+console.log("hi")
 
 
